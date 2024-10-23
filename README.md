@@ -164,3 +164,38 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 sudo docker run hello-world
 ```
 
+### (Optional) Step 4: Run docker without root privileges
+1. **If you cannot run docker in Visual Studio Code, you need to be able to run docker without sudo.**
+2. **First, you need to create a docker group:**
+
+```bash
+sudo groupadd docker
+```
+
+2. **Add your user to the docker group.**
+
+```bash
+sudo usermod -aG docker $USER
+```
+
+3. **Log out and log back in so that your group membership is re-evaluated.**
+
+- With WSL, open powershell and type in this command:
+
+```powershell
+wsl --shutdown
+```
+
+4. **Activate the changes to groups:**
+
+```bash
+newgrp docker
+```
+
+5. **Verify that you can run docker commands without sudo:**
+
+```bash
+docker run hello-world
+```
+
+
